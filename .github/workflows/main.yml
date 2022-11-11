@@ -51,12 +51,12 @@ jobs:
     steps:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            sudo docker pull ${{ secrets.USERNAME_DOCKER }}/none
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 ${{ secrets.USERNAME_DOCKER }}/none
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        script: |
+          sudo docker pull ${{ secrets.USERNAME_DOCKER }}/none
+          sudo docker stop $(sudo docker ps -a -q)
+          sudo docker run --rm -d -p 5000:5000 ${{ secrets.USERNAME_DOCKER }}/none
